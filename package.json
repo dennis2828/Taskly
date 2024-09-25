@@ -1,0 +1,17 @@
+{
+  "name": "taskly",
+  "version": "1.0.0",
+  "description": "Software to manage your to-dos",
+  "main": "index.js",
+  "repository": {
+    "url": ""
+  },
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./src/css/index.css -o ./src/css/output.css --watch"
+  },
+  "author": "Moldovan Dennis George",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.13"
+  }
+}

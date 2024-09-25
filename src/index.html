@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/output.css" rel="stylesheet">
+    <title>Taskly</title>
+</head>
+<body>
+    <div class="w-[100vw] h-[100vh] bg-gray-100/50">
+        <!-- Header -->
+        <header class="bg-white lg:h-[7%]">
+            <div class="h-full relative container mx-auto flex flex-col gap-2 lg:gap-0 lg:flex-row items-center justify-center">
+                <div class="text-center">
+                    <h1 class="text-blue-500 text-center font-extrabold w-fit text-[1.5em] md:text-[2em] tracking-wide flex-1 cursor-pointer">Taskly</h1>
+                </div>
+                <!-- Desktop Version -->
+                <div class="hidden lg:block absolute right-0 top-[50%] -translate-y-[50%]">
+                    <div class="flex items-center gap-3">
+                        <p class="text-gray-500 text-sm cursor-pointer hover:text-gray-600">view history</p>
+                        <p class="text-gray-500 text-sm cursor-pointer hover:text-gray-600">completed</p>
+                        <p class="text-gray-500 text-sm cursor-pointer hover:text-gray-600">toggle theme</p>
+                    </div>
+                </div>
+                <!-- Mobile Version -->
+                 <div class="lg:hidden">
+                    <div class="flex items-center justify-center gap-3">
+                        <p class="text-gray-500 text-sm cursor-pointer hover:text-gray-600">view history</p>
+                        <p class="text-gray-500 text-sm cursor-pointer hover:text-gray-600">completed</p>
+                        <p class="text-gray-500 text-sm cursor-pointer hover:text-gray-600">toggle theme</p>
+                    </div>
+                 </div>
+            </div>
+        </header>
+        <section class="container mx-auto flex items-center justify-center h-full lg:h-[86%]">test</section>
+       <footer class="container mx-auto lg:h-[7%]">This is the footer</footer>
+    </div>
+</body>
+</html>
