@@ -7,6 +7,7 @@
     "url": ""
   },
   "scripts": {
+    "dev": "snowpack dev",
     "tailwind": "npx tailwindcss -i ./src/css/index.css -o ./src/css/output.css --watch"
   },
   "author": "Moldovan Dennis George",
