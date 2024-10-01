@@ -1,4 +1,4 @@
-import { initializeUI, todos } from "./index.js";
+import { todos } from "./index.js";
 
 function todoInstance(name) {
     return {id: generateUniqueId(), name, createdAt: Date.now()};
@@ -14,7 +14,6 @@ function deleteTodo(id) {
     const newTodos = todos.filter(todo=>todo.id!==id) || [];
 
     updateTodos(newTodos);
-    initializeUI();
 }
 
 function initializeTodos() {
@@ -22,7 +21,7 @@ function initializeTodos() {
         if(localStorage.getItem("taskly-todos")) {
             const todos = JSON.parse(localStorage.getItem("taskly-todos"));
             
-            return todos;
+            return todos.sort((a, b) => b.createdAt - a.createdAt);
         } else {
             localStorage.setItem("taskly-todos",JSON.stringify([]));
 

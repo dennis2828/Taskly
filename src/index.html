@@ -11,6 +11,30 @@
     <script defer type="module" src="./js/todo.js"></script>
     <script defer type="module" src="./js/index.js"></script>
     <title>Taskly</title>
+    <style>
+        #todo-area::-webkit-scrollbar {
+            width: 8px; /* Make the scrollbar a bit thinner */
+        }
+
+        #todo-area::-webkit-scrollbar-thumb {
+            background-color: #d1d5db; /* Light gray thumb */
+            border-radius: 10px; /* Rounded scrollbar thumb */
+        }
+
+        #todo-area::-webkit-scrollbar-thumb:hover {
+            background-color: #9ca3af; /* Darker gray when hovered */
+        }
+
+        #todo-area::-webkit-scrollbar-track {
+            background-color: #f3f4f6; /* Very light gray track */
+        }
+
+        /* Firefox scrollbar styling */
+        #todo-area {
+            scrollbar-width: thin; /* Makes scrollbar thin in Firefox */
+            scrollbar-color: #d1d5db #f3f4f6; /* Thumb color and track color */
+        }
+    </style>
 </head>
 <body>
     <div class="w-[100vw] h-[100vh] bg-gray-100/50">
@@ -39,7 +63,7 @@
             </div>
         </header>
         <section class="container mx-auto flex items-center justify-center h-full lg:h-[86%]">
-            <div class="relative bg-white p-2 rounded-md min-h-[500px] w-full md:max-w-[420px]">
+            <div class="relative bg-white p-2 rounded-md h-[600px] w-full md:max-w-[420px] ">
                 <div class="bg-darkBlue p-2 rounded-md flex flex-col gap-4 md:flex-row items-center md:gap-10">
                     <p class="text-white text-[1.2em] tracking-wide font-poppins">Wednesday, <span class="text-xs font-poppins font-light">10:28</span></p>
                     <div class="flex flex-row-reverse items-center justify-center">
@@ -47,9 +71,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search peer-focus:animate-bounce"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                     </div>
                 </div>
-                    <p class="text-orange text-center font-medium text-xs">7 todos</p>
-                <div id="todo-area" class="h-full">
-                    
+                <div id="todo-area" class="my-1 max-h-[450px] overflow-y-scroll bg-transparent scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-400">
+                    <p class="text-gray-500 text-center text-sm mt-2">Todo list is empty</p>
                 </div>
                 <div class="absolute bottom-1 left-[50%] -translate-x-[50%]">
                     <div class="flex items-center justify-center gap-4">
