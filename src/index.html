@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./css/output.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script defer type="module" src="./js/index.js"></script>
     <title>Taskly</title>
 </head>
 <body>
@@ -36,7 +37,7 @@
             </div>
         </header>
         <section class="container mx-auto flex items-center justify-center h-full lg:h-[86%]">
-            <div class="relative bg-white p-2 rounded-md min-h-[500px] w-full md:max-w-[520px]">
+            <div class="relative bg-white p-2 rounded-md min-h-[500px] w-full md:max-w-[420px]">
                 <div class="bg-darkBlue p-2 rounded-md flex flex-col gap-4 md:flex-row items-center md:gap-10">
                     <p class="text-white text-[1.2em] tracking-wide font-poppins">Wednesday, <span class="text-xs font-poppins font-light">10:28</span></p>
                     <div class="flex flex-row-reverse items-center justify-center">
@@ -44,16 +45,53 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search peer-focus:animate-bounce"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                     </div>
                 </div>
-                    <p class="text-orange text-center font-medium text-xs">7 todos left</p>
+                    <p class="text-orange text-center font-medium text-xs">7 todos</p>
                 <div class="h-full">
-                    content
+                    <div class="p-2 w-full flex items-center justify-between cursor-pointer hover:bg-gray-100 rounded-md duration-100">
+                        <div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-[10px] h-[10px] rounded-full bg-darkBlue"></div>
+                                <p class="tracking-wide font-medium">Walk the dog</p>
+                            </div>
+                            <p class="text-sm text-gray-500 ml-6">now</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <input type="checkbox" class="cursor-pointer" />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash text-gray-500 hover:text-red-500"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                        </div>
+                    </div>
+                    
+                    <div class="p-2 w-full flex items-center justify-between cursor-pointer">
+                        <div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-[10px] h-[10px] rounded-full bg-darkBlue"></div>
+                                <p class="tracking-wide font-medium">Walk the dog</p>
+                            </div>
+                            <p class="text-sm text-gray-500 ml-6">now</p>
+                        </div>
+                        <div>
+                            <input type="checkbox" class="cursor-pointer" />
+                        </div>
+                    </div>
+                    <div class="p-2 w-full flex items-center justify-between cursor-pointer">
+                        <div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-[10px] h-[10px] rounded-full bg-darkBlue"></div>
+                                <p class="tracking-wide font-medium">Walk the dog</p>
+                            </div>
+                            <p class="text-sm text-gray-500 ml-6">now</p>
+                        </div>
+                        <div>
+                            <input type="checkbox" class="cursor-pointer" />
+                        </div>
+                    </div>
                 </div>
                 <div class="absolute bottom-1 left-[50%] -translate-x-[50%]">
                     <div class="flex items-center justify-center gap-4">
                         <button class="text-gray-400 p-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>                    </button>
                         </button>
-                        <button class="-mt-2 bg-darkBlue hover:bg-darkBlue/90 duration-100 rounded-full text-white p-2">
+                        <button id="open-modal" class="-mt-2 bg-darkBlue hover:bg-darkBlue/90 duration-100 rounded-full text-white p-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                         </button>
                         <button class=" text-gray-400 p-2">
@@ -63,6 +101,16 @@
                 </div>
             </div>
         </section>
+        <!-- Modals -->
+         <div id="create-todo-modal" class="hidden absolute top-0 left-0 right-0 bottom-0 duration-100 items-center justify-center z-10">
+             <div id="create-modal-content" class="hidden bg-white p-2 rounded-md">
+                <form id="create-todo-form">
+                    <input id="todo-input" type="input" placeholder="enter todo" />
+                    <button>create</button>
+                </form>
+                <button id="close-create-todo-modal">close</button>
+             </div>
+         </div>
        <footer class="container mx-auto lg:h-[7%] font-poppins">This is the footer</footer>
     </div>
 </body>
