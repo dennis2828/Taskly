@@ -1,22 +1,20 @@
-import { todos } from "./index.js";
-
 function todoInstance(name) {
     return {id: generateUniqueId(), name, createdAt: Date.now()};
 }
 
-function updateTodos(todos) {
+function updateTodos(newTodos) {
     if(localStorage) {
-        localStorage.setItem("taskly-todos",JSON.stringify(todos));
+        localStorage.setItem("taskly-todos",JSON.stringify(newTodos));
     }
 }
 
 function deleteTodo(id) {
-    const newTodos = todos.filter(todo=>todo.id!==id) || [];
+    const newTodos = getTodos().filter(todo=>todo.id!==id) || [];
 
     updateTodos(newTodos);
 }
 
-function initializeTodos() {
+function getTodos() {
     if(localStorage){
         if(localStorage.getItem("taskly-todos")) {
             const todos = JSON.parse(localStorage.getItem("taskly-todos"));
@@ -63,5 +61,5 @@ export {
     updateTodos,
     deleteTodo,
     getTimeAgo,
-    initializeTodos,
+    getTodos,
 }
