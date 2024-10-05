@@ -848,6 +848,13 @@ video {
   transition-duration: 100ms;
 }
 
+.checkedTodo {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+  text-decoration-line: line-through;
+  opacity: 0.7;
+}
+
 .placeholder\:text-center::-moz-placeholder {
   text-align: center;
 }

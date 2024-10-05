@@ -1,5 +1,5 @@
 function todoInstance(name) {
-    return {id: generateUniqueId(), name, createdAt: Date.now()};
+    return {id: generateUniqueId(), name, isChecked: false ,createdAt: Date.now()};
 }
 
 function updateTodos(newTodos) {
@@ -12,6 +12,38 @@ function deleteTodo(id) {
     const newTodos = getTodos().filter(todo=>todo.id!==id) || [];
 
     updateTodos(newTodos);
+}   
+
+function checkTodo(id) {
+    const todo = document.querySelector(`#${id}`);
+
+    if(todo) {
+        let updatedTodos = getTodos();
+
+        if(todo.classList.contains("checkedTodo")){
+            todo.classList.remove("checkedTodo");
+            todo.classList.add("hover:bg-gray-100")
+
+            updatedTodos = updatedTodos.map(todo=>{
+                if(todo.id===id) return {...todo, isChecked: false};
+                
+                return todo;
+            });
+
+        }
+        else {
+            todo.classList.remove("hover:bg-gray-100")
+            todo.classList.add("checkedTodo");
+
+            updatedTodos = updatedTodos.map(todo=>{
+                if(todo.id===id) return {...todo, isChecked: true};
+                
+                return todo;
+            });   
+
+        }
+        updateTodos(updatedTodos);
+    }
 }
 
 function getTodos() {
@@ -60,6 +92,7 @@ export {
     todoInstance,
     updateTodos,
     deleteTodo,
+    checkTodo,
     getTimeAgo,
     getTodos,
 }
