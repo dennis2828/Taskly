@@ -50,6 +50,10 @@ createTodoForm.addEventListener("submit",(e)=>{
 
     const todoName = todoInput.value;
     //todo validation
+    if(todoName.trim()==="") {
+        todoInput.classList.add("border-red-500 hidden ");
+        return;
+    }
 
     todoInput.value = "";
 
@@ -74,7 +78,7 @@ searchTodoInput.addEventListener("input", (e)=>{
 
 export function initializeUI(todos) {
     //update UI
-
+     
     if(todos.length > 0) {
         todoArea.innerHTML = "";
         todos.map(todo=>{
