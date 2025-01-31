@@ -1,10 +1,16 @@
-import { todoInstance, updateTodos, getTodos, deleteTodo, checkTodo, getTimeAgo } from "./todo.js";
+import { todoInstance, updateTodos, getTodos, deleteTodo, checkTodo, getTimeAgo, getDeletedTodos } from "./todo.js";
 
 // Modals
 const createModal = document.querySelector("#create-todo-modal");
 const createModalContent = document.querySelector("#create-modal-content");
 const closeCreateModalButton = document.querySelector("#close-create-todo-modal");
 const openModalButton = document.querySelector("#open-modal");
+
+const historyTodoModal = document.querySelector("#history-todo-modal");
+const openHistoryModal = document.querySelector("#open-history-modal");
+const historyModalContent = document.querySelector("#history-modal-content");
+const closeHistoryModalButton = document.querySelector("#history-create-todo-modal");
+
 
 // Todo
 const createTodoForm = document.querySelector("#create-todo-form");
@@ -23,6 +29,8 @@ initializeUI(todos);
 
 
 // Event Listeners
+
+//create modal
 openModalButton.addEventListener("click",()=>{
     createModal.classList.remove("hidden");
     createModal.classList.add("flex");
@@ -65,6 +73,59 @@ createTodoForm.addEventListener("submit",(e)=>{
     initializeUI(newTodos);
     
 });
+
+
+//history modal
+
+openHistoryModal.addEventListener("click",()=>{
+    historyTodoModal.classList.remove("hidden");
+    historyTodoModal.classList.add("flex");
+
+    const historyTodoContent = document.querySelector("#history-todo-deleted");
+    const deletedTodos = getDeletedTodos();
+
+
+    if(deletedTodos.length > 0) {
+        historyTodoContent.innerHTML = "";
+        deletedTodos.map(todo=>{
+            return (historyTodoContent.innerHTML +=
+                `
+               <div id=${todo.id} class="p-2 w-full flex items-center justify-between cursor-pointer hover:bg-gray-100 rounded-md duration-100 ${todo.isChecked ? "checkedTodo":null}">
+                    <div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-[10px] h-[10px] rounded-full bg-red-500"></div>
+                            <p class="tracking-wide font-medium">${todo.name}</p>
+                        </div>
+                        <p class="text-sm text-gray-500 ml-6">${getTimeAgo(todo.createdAt)}</p>
+                    </div>
+                </div>
+                `
+            )
+        });
+    } else {
+        historyTodoContent.innerHTML = `<p class="text-gray-500 text-center text-sm mt-2">No history</p>`;
+    }
+
+    setTimeout(()=>{
+        historyTodoModal.classList.add("bg-black/50");
+        historyModalContent.classList.remove("hidden");
+    }, 90);
+
+});
+
+closeHistoryModalButton.addEventListener("click",()=>{
+    historyTodoModal.classList.remove("bg-black/50");
+
+    setTimeout(()=>{
+        historyTodoModal.classList.add("hidden");
+        historyTodoModal.classList.remove("flex");
+        historyModalContent.classList.add("hidden");
+    }, 90);
+    
+});
+
+
+
 
 searchTodoInput.addEventListener("input", (e)=>{
     const searchedName = e.currentTarget.value.trim();

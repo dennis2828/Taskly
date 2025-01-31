@@ -77,6 +77,21 @@ function getTodos() {
     return [];
 }
 
+function getDeletedTodos() {
+    if(localStorage){
+        if(localStorage.getItem("taskly-deletedTodos")) {
+            const todos = JSON.parse(localStorage.getItem("taskly-deletedTodos"));
+            
+            return todos.sort((a, b) => b.createdAt - a.createdAt);
+        } else {
+            localStorage.setItem("taskly-deletedTodos",JSON.stringify([]));
+
+            return [];
+        }
+    }
+    return [];
+}
+
 function generateUniqueId() {
     return 'taskly-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
 }
@@ -111,4 +126,5 @@ export {
     checkTodo,
     getTimeAgo,
     getTodos,
+    getDeletedTodos,
 }
