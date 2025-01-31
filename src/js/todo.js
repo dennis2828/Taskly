@@ -11,7 +11,23 @@ function updateTodos(newTodos) {
 function deleteTodo(id) {
     const newTodos = getTodos().filter(todo=>todo.id!==id) || [];
 
+    if(localStorage){
+        const deletedTodo = getTodos().filter(todo=>todo.id==id);
+        console.log(deletedTodo[0]);
+        
+
+        if(localStorage.getItem("taskly-deletedTodos")) {
+            const deletedTodos = JSON.parse(localStorage.getItem("taskly-deletedTodos"));
+
+            localStorage.setItem("taskly-deletedTodos",JSON.stringify([deletedTodo[0],...deletedTodos]));
+            
+        } else {
+            localStorage.setItem("taskly-deletedTodos",JSON.stringify([deletedTodo[0]]));
+        }
+    }
+
     updateTodos(newTodos);
+
 }   
 
 function checkTodo(id) {
