@@ -91,12 +91,22 @@
         </section>
         <!-- Modals -->
          <div id="create-todo-modal" class="hidden absolute top-0 left-0 right-0 bottom-0 duration-100 items-center justify-center z-10">
-             <div id="create-modal-content" class="hidden bg-white p-2 rounded-md">
-                <form id="create-todo-form">
-                    <input id="todo-input" type="input" placeholder="enter todo" />
-                    <button>create</button>
+             <div id="create-modal-content" class="hidden relative bg-white p-2 rounded-md">
+                <form id="create-todo-form" class="w-full sm:w-[300px]">
+                    <div class="flex items-center gap-3 justify-between">
+                        <p class="text-[1.5em] font-bold text-center">Create new todo</p>
+                        <button id="close-create-todo-modal" class="text-red-500 hover:text-red-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                        </button>
+                    </div>
+                        <div class="flex justify-center items-baseline mt-3">
+                        <input id="todo-input" class="outline-none w-full border-2 border-blue-500 px-1 mt-2 font-semibold placeholder:font-normal" autofocus type="input" placeholder="Write your todo here" />
+                        <button class="p-2 rounded-md text-darkBlue hover:text-darkBlue/90 flex group items-center gap-1">
+                            Create
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right duration-100 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </button>
+                    </div>
                 </form>
-                <button id="close-create-todo-modal">close</button>
              </div>
          </div>
        <footer class="container mx-auto lg:h-[7%] font-poppins">This is the footer</footer>
