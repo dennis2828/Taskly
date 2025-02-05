@@ -20,6 +20,8 @@ const todoArea = document.querySelector("#todo-area");
 
 // Other Buttons
 const sortAlphabetical = document.querySelector("#sortAlphabetical");
+const lightMode = document.querySelector(".lightMode");
+const nightMode = document.querySelector(".nightMode");
 
 // Initial todos
 window.deleteTodo = deleteTodo;
@@ -59,6 +61,15 @@ sortAlphabetical.addEventListener('click',()=>{
             )
         });
 });
+lightMode.addEventListener("click",()=>{
+    lightMode.classList.toggle("hidden");
+    nightMode.classList.toggle("hidden");
+});
+nightMode.addEventListener("click",()=>{
+    nightMode.classList.toggle("hidden");
+    lightMode.classList.toggle("hidden");
+});
+
 
 //create modal
 openModalButton.addEventListener("click",()=>{

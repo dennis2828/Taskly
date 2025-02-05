@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 .checkedTodo {
     @apply bg-gray-300 opacity-70 line-through
 }

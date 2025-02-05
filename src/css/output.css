@@ -910,6 +910,8 @@ video {
   transition-duration: 100ms;
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 .checkedTodo {
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
