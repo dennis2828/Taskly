@@ -18,6 +18,9 @@ const todoInput = document.querySelector("#todo-input");
 const searchTodoInput = document.querySelector("#search-todo-input");
 const todoArea = document.querySelector("#todo-area");
 
+// Other Buttons
+const sortAlphabetical = document.querySelector("#sortAlphabetical");
+
 // Initial todos
 window.deleteTodo = deleteTodo;
 window.checkTodo = checkTodo;
@@ -29,6 +32,33 @@ initializeUI(todos);
 
 
 // Event Listeners
+
+sortAlphabetical.addEventListener('click',()=>{
+    const sortedTodos = [...todos].sort((a, b) => a.name.localeCompare(b.name));
+
+    console.log(sortedTodos);
+    
+    todoArea.innerHTML = "";
+        sortedTodos.map(todo=>{
+            return (todoArea.innerHTML +=
+                `
+               <div id=${todo.id} class="p-2 w-full flex items-center justify-between cursor-pointer hover:bg-gray-100 rounded-md duration-100 ${todo.isChecked ? "checkedTodo":null}">
+                    <div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-[10px] h-[10px] rounded-full bg-darkBlue"></div>
+                            <p class="tracking-wide font-medium">${todo.name}</p>
+                        </div>
+                        <p class="text-sm text-gray-500 ml-6">${getTimeAgo(todo.createdAt)}</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                    <input onclick="checkTodo('${todo.id}');" type="checkbox" ${todo.isChecked && "checked"} class="cursor-pointer" />
+                      <svg onclick="deleteTodo('${todo.id}'); initializeUI(getTodos());" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash text-gray-500 hover:text-red-500"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                    </div>
+                </div>
+                `
+            )
+        });
+});
 
 //create modal
 openModalButton.addEventListener("click",()=>{

@@ -66,11 +66,18 @@
             <div class="relative bg-white p-2 rounded-md h-[600px] w-full md:max-w-[420px] ">
                 <div class="bg-darkBlue p-2 rounded-md flex flex-col gap-4 md:flex-row items-center md:gap-10">
                     <p class="text-white text-[1.2em] tracking-wide font-poppins">Wednesday, <span class="text-xs font-poppins font-light">10:28</span></p>
-                    <div class="flex flex-row-reverse items-center justify-center">
-                        <input id="search-todo-input" autofocus class="outline-none peer bg-transparent placeholder:text-center text-gray-300 placeholder:text-gray-300 placeholder:text-xs font-poppins placeholder:font-light text-xs px-1 md:w-full" placeholder="search by name"/>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search peer-focus:animate-bounce"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    <div class="">
+                        <div class="flex flex-row-reverse items-center pt-2 justify-center">
+                            <input id="search-todo-input" autofocus class="outline-none peer bg-transparent placeholder:text-center text-gray-300 placeholder:text-gray-300 placeholder:text-xs font-poppins placeholder:font-light text-xs px-1 md:w-full" placeholder="search by name"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search peer-focus:animate-bounce"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                        </div>
+                        <div class="flex items-center justify-end py-2">
+                            <svg id="sortAlphabetical" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-a-z cursor-pointer"><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/><path d="M20 8h-5"/><path d="M15 10V6.5a2.5 2.5 0 0 1 5 0V10"/><path d="M15 14h5l-5 6h5"/></svg>
+                        </div>
                     </div>
                 </div>
+               
+
                 <div id="todo-area" class="my-1 max-h-[450px] h-full overflow-y-scroll bg-transparent scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-400">
                     <p class="text-gray-500 text-center text-sm mt-2">Todo list is empty</p>
                 </div>
