@@ -63,16 +63,17 @@
         </header>
         <section class="container mx-auto flex items-center justify-center h-full lg:h-[86%]">
             <div class="relative bg-white p-2 rounded-md h-[600px] w-full md:max-w-[420px] ">
-                <div class="bg-darkBlue p-2 rounded-md flex flex-col gap-4 md:flex-row items-center md:gap-10">
-                    <p class="text-white text-[1.2em] tracking-wide font-poppins">Wednesday, <span class="text-xs font-poppins font-light">10:28</span></p>
-                    <div class="">
-                        <div class="flex flex-row-reverse items-center pt-2 justify-center">
-                            <input id="search-todo-input" autofocus class="outline-none peer bg-transparent placeholder:text-center text-gray-300 placeholder:text-gray-300 placeholder:text-xs font-poppins placeholder:font-light text-xs px-1 md:w-full" placeholder="search by name"/>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search peer-focus:animate-bounce"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                        </div>
-                        <div class="flex items-center justify-end py-2">
-                            <svg id="sortAlphabetical" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-a-z cursor-pointer"><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/><path d="M20 8h-5"/><path d="M15 10V6.5a2.5 2.5 0 0 1 5 0V10"/><path d="M15 14h5l-5 6h5"/></svg>
-                        </div>
+                <div class="bg-darkBlue p-2 rounded-md">
+                    <div class="flex items-center justify-between">
+                        <p class="text-white text-[1.2em] tracking-wide font-poppins" id="currentDay">Wednesday, <p id="currentHour" class="font-poppins font-light text-gray-300 -ml-6">10:28</p></p>
+                            <div class="flex flex-row-reverse items-center pt-2 justify-center border-b">
+                                <input id="search-todo-input" autofocus class="outline-none peer bg-transparent placeholder:text-center text-gray-300 placeholder:text-gray-300 placeholder:text-xs font-poppins placeholder:font-light text-xs px-1 md:w-full" placeholder="search by name"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search peer-focus:animate-bounce"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                            </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-2">
+                        <p class="font-poppins text-white text-sm" id="todosLeft">12 todos left</p>
+                        <svg id="sortAlphabetical" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-a-z cursor-pointer"><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/><path d="M20 8h-5"/><path d="M15 10V6.5a2.5 2.5 0 0 1 5 0V10"/><path d="M15 14h5l-5 6h5"/></svg>
                     </div>
                 </div>
                
@@ -116,7 +117,7 @@
          </div>
 
          <div id="history-todo-modal" class="hidden absolute top-0 left-0 right-0 bottom-0 duration-100 items-center justify-center z-10">
-            <div id="history-modal-content" class="hidden relative bg-white p-2 rounded-md">
+            <div id="history-modal-content" class="hidden relative bg-white max-h-[300px] overflow-y-scroll p-2 rounded-md">
                <form id="history-todo-form" class="w-full sm:w-[300px]">
                     <div class="flex items-center gap-3 justify-between">
                         <p class="text-[1.5em] font-bold text-center">History</p>

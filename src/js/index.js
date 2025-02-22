@@ -9,7 +9,7 @@ const openModalButton = document.querySelector("#open-modal");
 const historyTodoModal = document.querySelector("#history-todo-modal");
 const openHistoryModal = document.querySelector("#open-history-modal");
 const historyModalContent = document.querySelector("#history-modal-content");
-const closeHistoryModalButton = document.querySelector("#history-create-todo-modal");
+const closeHistoryModalButton = document.querySelector("#close-history-todo-modal");
 
 
 // Todo
@@ -17,6 +17,7 @@ const createTodoForm = document.querySelector("#create-todo-form");
 const todoInput = document.querySelector("#todo-input");
 const searchTodoInput = document.querySelector("#search-todo-input");
 const todoArea = document.querySelector("#todo-area");
+const todosLeft = document.querySelector("#todosLeft");
 
 // Other Buttons
 const sortAlphabetical = document.querySelector("#sortAlphabetical");
@@ -36,7 +37,9 @@ initializeUI(todos);
 // Event Listeners
 
 sortAlphabetical.addEventListener('click',()=>{
-    const sortedTodos = [...todos].sort((a, b) => a.name.localeCompare(b.name));
+    if(getTodos().length>0){
+
+    const sortedTodos = getTodos().sort((a, b) => a.name.localeCompare(b.name));
 
     console.log(sortedTodos);
     
@@ -60,6 +63,7 @@ sortAlphabetical.addEventListener('click',()=>{
                 `
             )
         });
+    }
 });
 lightMode.addEventListener("click",()=>{
     lightMode.classList.toggle("hidden");
@@ -169,6 +173,8 @@ closeHistoryModalButton.addEventListener("click",()=>{
 
 
 searchTodoInput.addEventListener("input", (e)=>{
+    console.log(e.currentTarget.value);
+    
     const searchedName = e.currentTarget.value.trim();
 
     setTimeout(()=>{
@@ -176,6 +182,23 @@ searchTodoInput.addEventListener("input", (e)=>{
         initializeUI(results || []);
     },500);
 })
+
+
+function updateDateTime() {
+    const now = new Date();
+    const options = { weekday: 'long' };
+    const day = new Intl.DateTimeFormat('en-US', options).format(now);
+    
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    console.log(hours, minutes);
+    
+    document.getElementById('currentDay').textContent = `${day}, `;
+    document.getElementById('currentHour').textContent=`${hours}:${minutes}`;
+}
+
+updateDateTime(); // Initial call
+setInterval(updateDateTime, 1000 * 60);
 
 
 export function initializeUI(todos) {
