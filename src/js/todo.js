@@ -1,3 +1,5 @@
+import { remainingTodos } from "./index.js";
+
 function todoInstance(name) {
     return {id: generateUniqueId(), name, isChecked: false ,createdAt: Date.now()};
 }
@@ -5,6 +7,7 @@ function todoInstance(name) {
 function updateTodos(newTodos) {
     if(localStorage) {
         localStorage.setItem("taskly-todos",JSON.stringify(newTodos));
+        remainingTodos();
     }
 }
 

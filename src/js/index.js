@@ -18,6 +18,7 @@ const todoInput = document.querySelector("#todo-input");
 const searchTodoInput = document.querySelector("#search-todo-input");
 const todoArea = document.querySelector("#todo-area");
 const todosLeft = document.querySelector("#todosLeft");
+const html = document.documentElement;
 
 // Other Buttons
 const sortAlphabetical = document.querySelector("#sortAlphabetical");
@@ -47,11 +48,11 @@ sortAlphabetical.addEventListener('click',()=>{
         sortedTodos.map(todo=>{
             return (todoArea.innerHTML +=
                 `
-               <div id=${todo.id} class="p-2 w-full flex items-center justify-between cursor-pointer hover:bg-gray-100 rounded-md duration-100 ${todo.isChecked ? "checkedTodo":null}">
+               <div id=${todo.id} class="p-2 w-full flex items-center justify-between cursor-pointer hover:bg-gray-100 dark:hover:bg-darkGray rounded-md duration-100 ${todo.isChecked ? "checkedTodo":null}">
                     <div>
                         <div class="flex items-center gap-3">
                             <div class="w-[10px] h-[10px] rounded-full bg-darkBlue"></div>
-                            <p class="tracking-wide font-medium">${todo.name}</p>
+                            <p class="tracking-wide font-medium dark:text-white">${todo.name}</p>
                         </div>
                         <p class="text-sm text-gray-500 ml-6">${getTimeAgo(todo.createdAt)}</p>
                     </div>
@@ -65,13 +66,29 @@ sortAlphabetical.addEventListener('click',()=>{
         });
     }
 });
-lightMode.addEventListener("click",()=>{
-    lightMode.classList.toggle("hidden");
-    nightMode.classList.toggle("hidden");
+if (localStorage.getItem("theme") === "dark") {
+    html.classList.add("dark");
+    lightMode.classList.add("hidden");
+    nightMode.classList.remove("hidden");
+} else {
+    html.classList.remove("dark");
+    lightMode.classList.remove("hidden");
+    nightMode.classList.add("hidden");
+}
+
+// Event Listeners
+lightMode.addEventListener("click", () => {
+    html.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+    lightMode.classList.add("hidden");
+    nightMode.classList.remove("hidden");
 });
-nightMode.addEventListener("click",()=>{
-    nightMode.classList.toggle("hidden");
-    lightMode.classList.toggle("hidden");
+
+nightMode.addEventListener("click", () => {
+    html.classList.remove("dark");
+    localStorage.setItem("theme", "light");
+    nightMode.classList.add("hidden");
+    lightMode.classList.remove("hidden");
 });
 
 
@@ -139,7 +156,7 @@ openHistoryModal.addEventListener("click",()=>{
                     <div>
                         <div class="flex items-center gap-3">
                             <div class="w-[10px] h-[10px] rounded-full bg-red-500"></div>
-                            <p class="tracking-wide font-medium">${todo.name}</p>
+                            <p class="tracking-wide font-medium dark:text-white">${todo.name}</p>
                         </div>
                         <p class="text-sm text-gray-500 ml-6">${getTimeAgo(todo.createdAt)}</p>
                     </div>
@@ -197,23 +214,30 @@ function updateDateTime() {
     document.getElementById('currentHour').textContent=`${hours}:${minutes}`;
 }
 
-updateDateTime(); // Initial call
-setInterval(updateDateTime, 1000 * 60);
 
+
+export function remainingTodos(){
+    const remaining = getTodos().filter(todo=>!todo.isChecked).length || 0;
+    todosLeft.textContent=`${remaining} todos left`;
+}
 
 export function initializeUI(todos) {
     //update UI
-     
+    remainingTodos();
+    updateDateTime(); // Initial call
+    setInterval(updateDateTime, 1000 * 60);
+
+
     if(todos.length > 0) {
         todoArea.innerHTML = "";
         todos.map(todo=>{
             return (todoArea.innerHTML +=
                 `
-               <div id=${todo.id} class="p-2 w-full flex items-center justify-between cursor-pointer hover:bg-gray-100 rounded-md duration-100 ${todo.isChecked ? "checkedTodo":null}">
+               <div id=${todo.id} class="p-2 w-full flex items-center justify-between cursor-pointer hover:bg-gray-100 dark:hover:bg-darkGray rounded-md duration-100 ${todo.isChecked ? "checkedTodo":null}">
                     <div>
                         <div class="flex items-center gap-3">
                             <div class="w-[10px] h-[10px] rounded-full bg-darkBlue"></div>
-                            <p class="tracking-wide font-medium">${todo.name}</p>
+                            <p class="tracking-wide font-medium dark:text-white">${todo.name}</p>
                         </div>
                         <p class="text-sm text-gray-500 ml-6">${getTimeAgo(todo.createdAt)}</p>
                     </div>

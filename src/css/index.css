@@ -5,5 +5,5 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 .checkedTodo {
-    @apply bg-gray-300 opacity-70 line-through
+    @apply bg-gray-300 opacity-70 line-through dark:bg-darkGray
 }
