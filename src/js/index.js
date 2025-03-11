@@ -152,7 +152,7 @@ openHistoryModal.addEventListener("click",()=>{
         deletedTodos.map(todo=>{
             return (historyTodoContent.innerHTML +=
                 `
-               <div id=${todo.id} class="p-2 w-full flex items-center justify-between cursor-pointer hover:bg-gray-100 rounded-md duration-100 ${todo.isChecked ? "checkedTodo":null}">
+               <div id=${todo.id} class="p-2 w-full flex items-center justify-between cursor-pointer hover:bg-gray-100 dark:hover:bg-darkGray rounded-md duration-100 ${todo.isChecked ? "checkedTodo":null}">
                     <div>
                         <div class="flex items-center gap-3">
                             <div class="w-[10px] h-[10px] rounded-full bg-red-500"></div>
